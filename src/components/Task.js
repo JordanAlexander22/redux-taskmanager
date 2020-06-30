@@ -1,10 +1,11 @@
 import React from 'react';
 
 
-const Task = () => {
+const Task = (props) => {
     return(
         <div>
-           <h1> task </h1> 
+        <h2 className= 'card-title mt-3 text-uppercase px-2'>{props.task.title}</h2>
+        <p className= 'card-text mb-3 text-muted font-weight-bold px-2'>{props.task.description}</p>
         </div>
     )
 }

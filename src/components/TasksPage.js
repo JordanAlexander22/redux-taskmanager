@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
+import TasksList from './TasksList';
 
 const TASKS_STATUSES = ['Unstarted', 'In Progress', 'Completed']
 
 
 
-
-const TasksPage = () => {
+ 
+const TasksPage = (props) => {
     const [cardForm, showCardForm] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription]= useState('');
@@ -23,7 +24,15 @@ const TasksPage = () => {
     }
 
     const renderTasksLists = () => {
-        
+        const {tasks} = props;
+        return TASKS_STATUSES.map((status, id) => {
+            const statusTasks = tasks.filter((task) => task.status === status);
+            return (
+                <div className= 'col-md-3 card m-2 p-0' key= {id}>
+                    <TasksList key={id} status= {status} tasks= {statusTasks} />
+                </div>
+            )
+        });
     }
 
   
@@ -51,6 +60,9 @@ const TasksPage = () => {
                     <button className= 'btn btn-primary' type= 'submit'>Submit</button> 
                 </form>
                 )}
+            </div>
+            <div className= 'row d-flex justify-content-center position-relative' style= {{background: '#e9ecef'}}>
+                {renderTasksLists()}
             </div>
         </div>
     )
