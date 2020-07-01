@@ -9,7 +9,13 @@ const initialState = [
         id: 2,
         title: 'Learn Redux',
         description: 'Learn Redux Today',
-        status: 'Started'
+        status: 'Unstarted'
+    },
+    {
+        id: 3,
+        title: 'Learn varial flip',
+        description: 'Learn varial flip',
+        status: 'In Progress'
     }
 ]
 
