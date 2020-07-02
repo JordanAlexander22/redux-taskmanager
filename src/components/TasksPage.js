@@ -23,12 +23,19 @@ const TasksPage = (props) => {
         showCardForm(!cardForm)
     }
 
+    const resetForm = () => {
+        setTitle('')
+        setDescription('')
+        showCardForm(false)
+    }
+
     const onCreateTask= (e) => {
         e.preventDefault();
         props.onCreateTask({
             title,
             description
         })
+        resetForm();
     }
 
     const renderTasksLists = () => {
@@ -38,7 +45,7 @@ const TasksPage = (props) => {
             return (
                 <div className= 'col-md-3 card m-2 p-0' key= {id}>
                     <TasksList key={status} status= {status} tasks= {statusTasks}
-                     onStatusChange= {props.onStatusChange}/>
+                     onStatusChange= {props.onStatusChange} onRemoveTask= {props.onRemoveTask}/>
                 </div>
             )
         });

@@ -1,5 +1,5 @@
-import {EDIT_TASK} from './types';
-import {CREATE_TASK} from './types';
+import {EDIT_TASK, REMOVE_TASK, CREATE_TASK} from './types';
+
 
 import uuid from 'react-uuid';
 
@@ -24,4 +24,11 @@ export const createTask = ({title, description}) => {
             status: 'Unstarted',
         }
     }; 
+}
+
+export const removeTask = (id) => {
+    return {
+        type: REMOVE_TASK,
+        id,
+    }
 }
