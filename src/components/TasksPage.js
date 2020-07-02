@@ -23,6 +23,14 @@ const TasksPage = (props) => {
         showCardForm(!cardForm)
     }
 
+    const onCreateTask= (e) => {
+        e.preventDefault();
+        props.onCreateTask({
+            title,
+            description
+        })
+    }
+
     const renderTasksLists = () => {
         const {tasks} = props;
         return TASKS_STATUSES.map((status, id) => {
@@ -51,7 +59,7 @@ const TasksPage = (props) => {
                     </div>
                 </div>
                 {cardForm && (
-                <form>
+                <form onSubmit={onCreateTask}>
                     <div className= 'form-group'>
                         <input type= 'text' className= 'form-control' placeholder= 'task title' onChange= {onChangeTitle}/> 
                     </div>
