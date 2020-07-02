@@ -22,18 +22,38 @@ const initialState = [
 ];
 
 const tasks = (state= {tasks: initialState}, action) => {
-    if(action.type === EDIT_TASK) {
-        const {payload} = action;
-        return {
-            tasks: state.tasks.map((task) => {
-                if(task.id === payload.id) {
-                    return Object.assign({}, task, payload.params )
-                }
-                return task
-            }),
+    // if(action.type === EDIT_TASK) {   IF ELSE
+    //     const {payload} = action;
+    //     return {
+    //         tasks: state.tasks.map((task) => {
+    //             if(task.id === payload.id) {
+    //                 return Object.assign({}, task, payload.params )
+    //             }
+    //             return task
+    //         }),
+    //     }
+    // }
+
+    // SWITCH VERSION BELOW
+
+    const {payload} = action;
+
+    switch(action.type) {
+        case EDIT_TASK : {
+            return {
+                    tasks: state.tasks.map((task) => {
+                        if(task.id === payload.id) {
+                            return Object.assign({}, task, payload.params )
+                        }
+                        return task
+                    }),
         }
     }
-    return state
+
+
+
+    default: return state
+}
 }
 
 export default tasks;
